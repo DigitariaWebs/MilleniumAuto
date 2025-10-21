@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+
+/* Roadmap (GSAP) styles */
+::-webkit-scrollbar { display: none; }
+
+/* Hero gradient animation */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.pinned {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #000;
+  position: relative;
+}
+
+.footer {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer h1 {
+  font-size: 4vw;
+  font-weight: lighter;
+  color: #fff;
+  text-align: center;
+}
+
+.stickyHeader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+}
+
+.stickyHeader h1 {
+  font-size: clamp(38px, 11vw, 170px);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 2px #fff;
+  text-align: center;
+}
+
+.card {
+  position: absolute;
+  top: 150%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(0deg);
+  width: 40%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+  border-radius: 1em;
+  will-change: transform;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+}
+
+.cardPhase {
+  position: absolute;
+  top: 1em;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.125em 0.25em;
+  border-radius: 0.25em;
+  color: #000;
+}
+
+.cardPhase p { font-size: 24px; }
+
+.cardTitle { text-align: center; }
+.cardTitle p { font-size: 36px; }
+.cardTitle h1 {
+  font-size: 80px; font-weight: lighter; line-height: 90%;
+}
+.cardTitle h1 span { color: transparent; -webkit-text-stroke: 1.25px #fff; }
+
+.progressBar {
+  position: absolute; top: 0; right: 0; width: 8px; height: 100%;
+  background-color: #fff; opacity: 0;
+}
+.progressBar::after {
+  content: ""; position: absolute; top:0; left:0; width:100%; height:100%;
+  background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 50%, rgba(0,0,0,0) 80%, rgba(0,0,0,1) 100%);
+}
+.progress { width:100%; height:0%; background-color:#353531; }
+
+.indices {
+  position: absolute; top: 0; right: 24px; height: 100%;
+  display: flex; flex-direction: column; justify-content: center;
+  gap: 4em; opacity: 0;
+}
+.index { text-align: right; opacity: 0.25; }
+.index p { text-decoration: line-through; text-transform: uppercase; font-size: 0.95rem; }
+.index p:nth-child(2) { font-size: 0.95rem; }
+.index p:nth-child(3) { font-size: 1.125rem; }
+
+@media (max-width: 900px) {
+  .card { width: 75%; height: 40%; }
+  .cardPhase p { font-size: 18px; }
+  .cardTitle p { font-size: 24px; }
+  .cardTitle h1 { font-size: 40px; }
+  .cardTitle h1 span { -webkit-text-stroke: 0.75px #fff; }
+  .indices { right: 15px; }
+  .index p:nth-child(2), .index p:nth-child(3) { display: none; }
+  .footer h1 { font-size: 8vw; }
+}
+
+
