@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -8,287 +8,344 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-interface CardData {
-  id: string;
-  phase: string;
-  date: string;
+interface StepData {
+  id: number;
+  step: string;
   title: string;
   subtitle: string;
-  color: string;
-  icon: string; // kept for API compatibility; icons rendered as colored dots
-  image: string;
+  description: string;
+  icon: string;
 }
 
-const PRIMARY = "#0E2C47"; // site brand
-
-const cardsData: CardData[] = [
+const stepsData: StepData[] = [
   {
-    id: "card-1",
-    phase: "Étape #01",
-    date: "",
+    id: 1,
+    step: "01",
     title: "Complétez",
     subtitle: "notre formulaire",
-    color: PRIMARY,
-    icon: "form",
-    image: "/assets/card-1.png",
+    description:
+      "Remplissez notre formulaire en ligne simple et rapide avec les informations de votre véhicule.",
+    icon: "📝",
   },
   {
-    id: "card-2",
-    phase: "Étape #02",
-    date: "",
+    id: 2,
+    step: "02",
     title: "Recevez",
     subtitle: "notre meilleure offre",
-    color: PRIMARY,
-    icon: "offer",
-    image: "/assets/card-2.png",
+    description:
+      "Notre équipe évalue votre véhicule et vous propose la meilleure offre du marché sous 24h.",
+    icon: "💰",
   },
   {
-    id: "card-3",
-    phase: "Étape #03",
-    date: "",
-    title: "Vendez‑nous",
+    id: 3,
+    step: "03",
+    title: "Vendez-nous",
     subtitle: "votre véhicule",
-    color: PRIMARY,
-    icon: "sell",
-    image: "/assets/card-3.png",
+    description:
+      "Acceptez l'offre et nous nous occupons de tout. Paiement immédiat et démarches simplifiées.",
+    icon: "🚗",
   },
 ];
 
 export default function Roadmap() {
-  const pinnedSectionRef = useRef<HTMLElement | null>(null);
-  const stickyHeaderRef = useRef<HTMLDivElement | null>(null);
-  const cardsRef = useRef<HTMLDivElement[]>([]);
-  const progressBarContainerRef = useRef<HTMLDivElement | null>(null);
-  const progressBarRef = useRef<HTMLDivElement | null>(null);
-  const indicesContainerRef = useRef<HTMLDivElement | null>(null);
-  const indicesRef = useRef<HTMLDivElement[]>([]);
+  const sectionRef = useRef<HTMLElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const stepsContainerRef = useRef<HTMLDivElement>(null);
+  const [activeStep, setActiveStep] = useState(0);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    const pinnedSection = pinnedSectionRef.current;
-    const stickyHeader = stickyHeaderRef.current;
-    const cards = cardsRef.current;
-    const progressBarContainer = progressBarContainerRef.current;
-    const progressBar = progressBarRef.current;
-    const indicesContainer = indicesContainerRef.current;
-    const indices = indicesRef.current;
+    const section = sectionRef.current;
+    const title = titleRef.current;
+    const stepsContainer = stepsContainerRef.current;
 
-    if (
-      !pinnedSection ||
-      !stickyHeader ||
-      !cards.length ||
-      !progressBarContainer ||
-      !progressBar ||
-      !indicesContainer ||
-      !indices.length
-    )
-      return;
+    if (!section || !title || !stepsContainer) return;
 
-    let lenisInstance: any | null = null;
-    let rafCb: ((t: number) => void) | null = null;
+    // Animate title on scroll
+    gsap.fromTo(
+      title,
+      {
+        opacity: 0,
+        y: 50,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: section,
+          start: "top 80%",
+          end: "top 50%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
 
-    (async () => {
-      try {
-        const mod: any = await import("lenis");
-        const LenisCtor = mod?.Lenis ?? mod?.default;
-        if (LenisCtor) {
-          lenisInstance = new LenisCtor();
-          lenisInstance.on("scroll", ScrollTrigger.update);
-          rafCb = (time: number) => {
-            lenisInstance && lenisInstance.raf(time * 1000);
-          };
-          gsap.ticker.add(rafCb as any);
-          gsap.ticker.lagSmoothing(0);
+    // Animate steps
+    const stepCards = stepsContainer.querySelectorAll(".step-card");
+    stepCards.forEach((card, index) => {
+      gsap.fromTo(
+        card,
+        {
+          opacity: 0,
+          y: 80,
+          scale: 0.9,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.8,
+          delay: index * 0.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 85%",
+            end: "top 60%",
+            toggleActions: "play none none reverse",
+          },
         }
-      } catch {}
-    })();
-
-    const cardCount = cards.length;
-    const pinnedHeight = window.innerHeight * (cardCount + 1) * 0.8; // shorten pin duration by ~20%
-    const startPattern = [0, 5, 0, -5];
-    const endPattern = [-10, -5, 10, 5];
-    const startRotations = Array.from({ length: cardCount }, (_, i) => startPattern[i % startPattern.length]);
-    const endRotations = Array.from({ length: cardCount }, (_, i) => endPattern[i % endPattern.length]);
-    const progressColors = Array.from({ length: cardCount }, () => PRIMARY);
-
-    cards.forEach((card, index) => {
-      gsap.set(card, { rotation: startRotations[index] });
+      );
     });
 
-    let isProgressBarVisible = false;
-    let currentActiveIndex = -1;
-
-    const animateIndexOpacity = (newIndex: number) => {
-      if (newIndex !== currentActiveIndex) {
-        indices.forEach((el, i) => {
-          gsap.to(el, {
-            opacity: i === newIndex ? 1 : 0.25,
-            duration: 0.5,
-            ease: "power2.out",
-          });
-        });
-        currentActiveIndex = newIndex;
-      }
-    };
-
-    const showProgressAndIndices = () => {
-      gsap.to([progressBarContainer, indicesContainer], {
-        opacity: 1,
-        duration: 0.5,
-        ease: "power2.out",
-      });
-      isProgressBarVisible = true;
-    };
-
-    const hideProgressAndIndices = () => {
-      gsap.to([progressBarContainer, indicesContainer], {
-        opacity: 0,
-        duration: 0.5,
-        ease: "power2.out",
-      });
-      isProgressBarVisible = false;
-      animateIndexOpacity(-1);
-    };
-
-    const scrollTrigger = ScrollTrigger.create({
-      trigger: pinnedSection,
-      start: "top top",
-      end: `+=${pinnedHeight}`,
-      pin: true,
-      pinSpacing: true,
-      onLeave: () => {
-        hideProgressAndIndices();
-      },
-      onEnterBack: () => {
-        showProgressAndIndices();
-      },
-      onUpdate: (self) => {
-        const progress = self.progress * (cardCount + 1);
-        const currentCard = Math.floor(progress);
-
-        if (progress <= 1) {
-          gsap.to(stickyHeader, {
-            opacity: 1 - progress,
-            duration: 0.1,
-            ease: "none",
-          });
-        } else {
-          gsap.set(stickyHeader, { opacity: 0 });
-        }
-
-        if (progress > 1 && !isProgressBarVisible) {
-          showProgressAndIndices();
-        } else if (progress <= 1 && isProgressBarVisible) {
-          hideProgressAndIndices();
-        }
-
-        let progressHeight = 0;
-        let colorIndex = -1;
-        if (progress > 1) {
-          progressHeight = ((progress - 1) / cardCount) * 100;
-          colorIndex = Math.min(Math.floor(progress - 1), cardCount - 1);
-        }
-
-        gsap.to(progressBar, {
-          height: `${progressHeight}%`,
-          backgroundColor: progressColors[colorIndex],
-          duration: 0.3,
-          ease: "power1.out",
-        });
-
-        if (isProgressBarVisible) {
-          animateIndexOpacity(colorIndex);
-        }
-
-        cards.forEach((card, index) => {
-          if (index < currentCard) {
-            gsap.set(card, {
-              top: "50%",
-              rotation: endRotations[index],
-            });
-          } else if (index === currentCard) {
-            const cardProgress = progress - currentCard;
-            const newTop = gsap.utils.interpolate(150, 50, cardProgress);
-            const newRotation = gsap.utils.interpolate(
-              startRotations[index],
-              endRotations[index],
-              cardProgress
+    // Update active step on scroll
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = parseInt(
+              entry.target.getAttribute("data-index") || "0"
             );
-            gsap.set(card, {
-              top: `${newTop}%`,
-              rotation: newRotation,
-            });
-          } else {
-            gsap.set(card, {
-              top: "150%",
-              rotation: startRotations[index],
-            });
+            setActiveStep(index);
           }
         });
       },
-    });
+      { threshold: 0.6 }
+    );
+
+    stepCards.forEach((card) => observer.observe(card));
 
     return () => {
-      scrollTrigger.kill();
-      if (rafCb) gsap.ticker.remove(rafCb as any);
-      if (lenisInstance) lenisInstance.destroy();
+      observer.disconnect();
     };
   }, []);
 
   return (
-    <>
-      <section className="pinned" ref={pinnedSectionRef as any}>
-        <div className="stickyHeader" ref={stickyHeaderRef}>
-          <h1>Comment ça fonctionne</h1>
-        </div>
+    <section
+      ref={sectionRef}
+      className="relative py-24 md:py-32 bg-white overflow-hidden"
+    >
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 -left-48 w-96 h-96 bg-gray-100 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 -right-48 w-96 h-96 bg-gray-200 rounded-full blur-3xl"></div>
+      </div>
 
-        <div className="progressBar" ref={progressBarContainerRef}>
-          <div className="progress" ref={progressBarRef} />
-        </div>
-
-        <div className="indices" ref={indicesContainerRef}>
-          {cardsData.map((card, index) => (
-            <div
-              key={card.id}
-              className="index"
-              ref={(el) => {
-                if (el) indicesRef.current[index] = el;
-              }}
-            >
-              <p style={{ color: "#ffffff" }}>●</p>
-              <p style={{ color: "#ffffff" }}>{card.date}</p>
-              <p style={{ color: "#ffffff" }}>{card.title} {card.subtitle}</p>
-            </div>
-          ))}
-        </div>
-
-        {cardsData.map((card, index) => (
-          <div
-            key={card.id}
-            className="card"
-            id={card.id}
-            ref={(el) => {
-              if (el) cardsRef.current[index] = el;
-            }}
-            style={{
-              border: `2px solid ${card.color}35`,
-              backgroundImage: `url(${card.image})`,
-            }}
+      <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
+        {/* Section Header */}
+        <div className="text-center mb-16 md:mb-24">
+          <h2
+            ref={titleRef}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-4"
           >
-            <div className="cardPhase" style={{ backgroundColor: card.color }}>
-              <p>{card.phase}</p>
-            </div>
-            <div className="cardTitle" style={{ color: card.color }}>
-              <p>{card.date ? `Dès ${card.date}` : ""}</p>
-              <h1>
-                {card.title} <span>{card.subtitle}</span>
-              </h1>
+            Comment ça <span className="text-gray-600">fonctionne</span>
+          </h2>
+          <p className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto mt-6">
+            Vendez votre véhicule en 3 étapes simples
+          </p>
+        </div>
+
+        {/* Steps Container */}
+        <div ref={stepsContainerRef} className="relative">
+          {/* Desktop: Horizontal Timeline */}
+          <div className="hidden lg:block">
+            {/* Timeline Line */}
+            <div className="absolute top-1/3 left-0 right-0 h-1 bg-linear-to-r from-transparent via-gray-300 to-transparent"></div>
+
+            <div className="grid grid-cols-3 gap-8 relative">
+              {stepsData.map((step, index) => (
+                <div
+                  key={step.id}
+                  data-index={index}
+                  className="step-card group"
+                >
+                  {/* Timeline Dot */}
+                  <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 z-10">
+                    <div
+                      className={`w-16 h-16 rounded-full border-4 border-white flex items-center justify-center transition-all duration-500 ${
+                        activeStep >= index
+                          ? "bg-black scale-110"
+                          : "bg-gray-200"
+                      }`}
+                    >
+                      <span className="text-2xl">{step.icon}</span>
+                    </div>
+                  </div>
+
+                  {/* Card */}
+                  <div
+                    className={`mt-16 p-8 rounded-2xl border-2 transition-all duration-500 backdrop-blur-sm ${
+                      activeStep >= index
+                        ? "bg-white border-gray-300 shadow-2xl shadow-gray-200/50"
+                        : "bg-gray-50 border-gray-200 hover:border-gray-300"
+                    }`}
+                  >
+                    {/* Step Number */}
+                    <div className="flex items-center gap-3 mb-4">
+                      <span
+                        className={`text-6xl font-bold transition-colors duration-500 ${
+                          activeStep >= index ? "text-black" : "text-gray-400"
+                        }`}
+                      >
+                        {step.step}
+                      </span>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-2xl font-bold text-black mb-2">
+                      {step.title}
+                    </h3>
+                    <p className="text-xl text-gray-700 mb-4">
+                      {step.subtitle}
+                    </p>
+
+                    {/* Description */}
+                    <p className="text-gray-600 leading-relaxed">
+                      {step.description}
+                    </p>
+
+                    {/* Arrow indicator */}
+                    {index < stepsData.length - 1 && (
+                      <div className="absolute -right-4 top-1/2 transform -translate-y-1/2 hidden xl:block">
+                        <svg
+                          className={`w-8 h-8 transition-colors duration-500 ${
+                            activeStep > index
+                              ? "text-primary"
+                              : "text-gray-700"
+                          }`}
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 5l7 7-7 7"
+                          />
+                        </svg>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-        ))}
-      </section>
-    </>
+
+          {/* Mobile & Tablet: Vertical Timeline */}
+          <div className="lg:hidden space-y-8 md:space-y-12">
+            {/* Vertical Line */}
+            <div className="absolute left-8 md:left-12 top-0 bottom-0 w-1 bg-linear-to-b from-transparent via-gray-300 to-transparent"></div>
+
+            {stepsData.map((step, index) => (
+              <div
+                key={step.id}
+                data-index={index}
+                className="step-card relative pl-20 md:pl-28"
+              >
+                {/* Timeline Dot */}
+                <div className="absolute left-0 md:left-4 top-0">
+                  <div
+                    className={`w-16 h-16 rounded-full border-4 border-white flex items-center justify-center transition-all duration-500 ${
+                      activeStep >= index ? "bg-black" : "bg-gray-200"
+                    }`}
+                  >
+                    <span className="text-2xl">{step.icon}</span>
+                  </div>
+                </div>
+
+                {/* Card */}
+                <div
+                  className={`p-6 md:p-8 rounded-2xl border-2 transition-all duration-500 backdrop-blur-sm ${
+                    activeStep >= index
+                      ? "bg-white border-gray-300 shadow-2xl shadow-gray-200/50"
+                      : "bg-gray-50 border-gray-200"
+                  }`}
+                >
+                  {/* Step Number */}
+                  <span
+                    className={`text-5xl md:text-6xl font-bold block mb-3 transition-colors duration-500 ${
+                      activeStep >= index ? "text-black" : "text-gray-400"
+                    }`}
+                  >
+                    {step.step}
+                  </span>
+
+                  {/* Title */}
+                  <h3 className="text-xl md:text-2xl font-bold text-black mb-2">
+                    {step.title}
+                  </h3>
+                  <p className="text-lg md:text-xl text-gray-700 mb-4">
+                    {step.subtitle}
+                  </p>
+
+                  {/* Description */}
+                  <p className="text-gray-600 leading-relaxed">
+                    {step.description}
+                  </p>
+                </div>
+
+                {/* Arrow indicator for mobile */}
+                {index < stepsData.length - 1 && (
+                  <div className="absolute left-7 md:left-11 -bottom-4 md:-bottom-6">
+                    <svg
+                      className={`w-8 h-8 transition-colors duration-500 ${
+                        activeStep > index ? "text-primary" : "text-gray-700"
+                      }`}
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Call to Action */}
+        <div className="text-center mt-16 md:mt-24">
+          <a
+            href="/contact"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-black text-white font-semibold rounded-full hover:shadow-2xl hover:shadow-black/50 transition-all duration-300 hover:scale-105 group"
+          >
+            <span>Commencer maintenant</span>
+            <svg
+              className="w-5 h-5 group-hover:translate-x-1 transition-transform"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M13 7l5 5m0 0l-5 5m5-5H6"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
   );
 }
 

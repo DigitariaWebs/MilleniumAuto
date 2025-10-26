@@ -214,11 +214,18 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <div className={`${barlow.className} pb-24 bg-[#1D4760]`}>
+    <div className={`${barlow.className} pb-24 bg-black`}>
       {/* Header */}
       <header className="pt-20 md:pt-[120px] pb-4 md:pb-10">
         <div className="max-w-[1200px] mx-auto px-6 md:px-10 lg:px-16">
-          <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="uppercase tracking-[0.12em] text-[11px] text-white/80">Contact</motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="uppercase tracking-[0.12em] text-[11px] text-white/80"
+          >
+            Contact
+          </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -227,44 +234,108 @@ const ContactForm: React.FC = () => {
           >
             Écrivez‑nous, on s’occupe du reste
           </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="mt-6 md:mt-8 max-w-[520px] text-white font-medium text-[15px] md:text-[16px]">
-            Appelez‑nous, écrivez‑nous ou envoyez les infos de votre véhicule. Réponse rapide et service humain, fidèle à Millenium Auto.
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="mt-6 md:mt-8 max-w-[520px] text-white font-medium text-[15px] md:text-[16px]"
+          >
+            Appelez‑nous, écrivez‑nous ou envoyez les infos de votre véhicule.
+            Réponse rapide et service humain, fidèle à Millenium Auto.
           </motion.p>
         </div>
       </header>
 
       {/* Vos informations personnelles */}
-      <Section id="sec-personnel" index={0} title="Vos informations personnelles" thumbVisible={thumbFor === 'sec-personnel'}>
+      <Section
+        id="sec-personnel"
+        index={0}
+        title="Vos informations personnelles"
+        thumbVisible={thumbFor === "sec-personnel"}
+      >
         <div className="mt-2 space-y-6">
-          <p className="text-white font-medium text-[15px] md:text-[16px]">Nous avons besoin de vos informations personnelles pour pouvoir vous contacter pour vous donner votre prix.</p>
+          <p className="text-white font-medium text-[15px] md:text-[16px]">
+            Nous avons besoin de vos informations personnelles pour pouvoir vous
+            contacter pour vous donner votre prix.
+          </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl">
             <div>
-              <label className="block text-[12px] text-[#9aa1a6] mb-2">Prénom *</label>
-              <input name="firstName" value={personal.firstName} onChange={handlePersonalChange} className="w-full bg-transparent border-b border-white/20 focus:border-white/40 outline-none py-3 text-[14px]" />
+              <label className="block text-[12px] text-[#9aa1a6] mb-2">
+                Prénom *
+              </label>
+              <input
+                name="firstName"
+                value={personal.firstName}
+                onChange={handlePersonalChange}
+                className="w-full bg-transparent border-b border-white/20 focus:border-white/40 outline-none py-3 text-[14px]"
+              />
             </div>
             <div>
-              <label className="block text-[12px] text-[#9aa1a6] mb-2">Nom *</label>
-              <input name="lastName" value={personal.lastName} onChange={handlePersonalChange} className="w-full bg-transparent border-b border-white/20 focus:border-white/40 outline-none py-3 text-[14px]" />
+              <label className="block text-[12px] text-[#9aa1a6] mb-2">
+                Nom *
+              </label>
+              <input
+                name="lastName"
+                value={personal.lastName}
+                onChange={handlePersonalChange}
+                className="w-full bg-transparent border-b border-white/20 focus:border-white/40 outline-none py-3 text-[14px]"
+              />
             </div>
             <div>
-              <label className="block text-[12px] text-[#9aa1a6] mb-2">Téléphone *</label>
-              <input name="phone" value={personal.phone} onChange={handlePersonalChange} className="w-full bg-transparent border-b border-white/20 focus:border-white/40 outline-none py-3 text-[14px]" />
+              <label className="block text-[12px] text-[#9aa1a6] mb-2">
+                Téléphone *
+              </label>
+              <input
+                name="phone"
+                value={personal.phone}
+                onChange={handlePersonalChange}
+                className="w-full bg-transparent border-b border-white/20 focus:border-white/40 outline-none py-3 text-[14px]"
+              />
             </div>
             <div>
-              <label className="block text-[12px] text-[#9aa1a6] mb-2">Courriel *</label>
-              <input name="email" type="email" value={personal.email} onChange={handlePersonalChange} className="w-full bg-transparent border-b border-white/20 focus:border-white/40 outline-none py-3 text-[14px]" />
+              <label className="block text-[12px] text-[#9aa1a6] mb-2">
+                Courriel *
+              </label>
+              <input
+                name="email"
+                type="email"
+                value={personal.email}
+                onChange={handlePersonalChange}
+                className="w-full bg-transparent border-b border-white/20 focus:border-white/40 outline-none py-3 text-[14px]"
+              />
             </div>
             <div className="md:col-span-2">
-              <label className="block text-[12px] text-[#9aa1a6] mb-2">Adresse *</label>
-              <input name="address" value={personal.address} onChange={handlePersonalChange} className="w-full bg-transparent border-b border-white/20 focus:border-white/40 outline-none py-3 text-[14px]" />
+              <label className="block text-[12px] text-[#9aa1a6] mb-2">
+                Adresse *
+              </label>
+              <input
+                name="address"
+                value={personal.address}
+                onChange={handlePersonalChange}
+                className="w-full bg-transparent border-b border-white/20 focus:border-white/40 outline-none py-3 text-[14px]"
+              />
             </div>
             <div>
-              <label className="block text-[12px] text-[#9aa1a6] mb-2">Ville *</label>
-              <input name="city" value={personal.city} onChange={handlePersonalChange} className="w-full bg-transparent border-b border-white/20 focus:border-white/40 outline-none py-3 text-[14px]" />
+              <label className="block text-[12px] text-[#9aa1a6] mb-2">
+                Ville *
+              </label>
+              <input
+                name="city"
+                value={personal.city}
+                onChange={handlePersonalChange}
+                className="w-full bg-transparent border-b border-white/20 focus:border-white/40 outline-none py-3 text-[14px]"
+              />
             </div>
             <div>
-              <label className="block text-[12px] text-[#9aa1a6] mb-2">Province *</label>
-              <select name="province" value={personal.province} onChange={handlePersonalChange} className="w-full bg-transparent border-b border-white/20 focus:border-white/40 outline-none py-3 text-[14px]">
+              <label className="block text-[12px] text-[#9aa1a6] mb-2">
+                Province *
+              </label>
+              <select
+                name="province"
+                value={personal.province}
+                onChange={handlePersonalChange}
+                className="w-full bg-transparent border-b border-white/20 focus:border-white/40 outline-none py-3 text-[14px]"
+              >
                 <option value="Québec">Québec</option>
                 <option value="Ontario">Ontario</option>
                 <option value="Nouveau-Brunswick">Nouveau-Brunswick</option>
@@ -272,12 +343,21 @@ const ContactForm: React.FC = () => {
                 <option value="Manitoba">Manitoba</option>
                 <option value="Saskatchewan">Saskatchewan</option>
                 <option value="Alberta">Alberta</option>
-                <option value="Colombie-Britannique">Colombie-Britannique</option>
+                <option value="Colombie-Britannique">
+                  Colombie-Britannique
+                </option>
               </select>
             </div>
             <div>
-              <label className="block text-[12px] text-[#9aa1a6] mb-2">Code postal *</label>
-              <input name="postalCode" value={personal.postalCode} onChange={handlePersonalChange} className="w-full bg-transparent border-b border-white/20 focus:border-white/40 outline-none py-3 text-[14px]" />
+              <label className="block text-[12px] text-[#9aa1a6] mb-2">
+                Code postal *
+              </label>
+              <input
+                name="postalCode"
+                value={personal.postalCode}
+                onChange={handlePersonalChange}
+                className="w-full bg-transparent border-b border-white/20 focus:border-white/40 outline-none py-3 text-[14px]"
+              />
             </div>
           </div>
         </div>
@@ -285,40 +365,100 @@ const ContactForm: React.FC = () => {
 
       {/* Informations sur le véhicule */}
       <div className="mt-4 md:mt-6" />
-      <Section id="sec-vehicule" index={1} title="Informations sur le véhicule" thumbVisible={thumbFor === 'sec-vehicule'}>
+      <Section
+        id="sec-vehicule"
+        index={1}
+        title="Informations sur le véhicule"
+        thumbVisible={thumbFor === "sec-vehicule"}
+      >
         <div className="mt-2 space-y-6">
-          <p className="text-white font-medium text-[15px] md:text-[16px]">Renseignez les informations du véhicule. Le numéro de série (VIN) est optionnel.</p>
+          <p className="text-white font-medium text-[15px] md:text-[16px]">
+            Renseignez les informations du véhicule. Le numéro de série (VIN)
+            est optionnel.
+          </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl">
             <div className="md:col-span-2">
-              <label className="block text-[12px] text-[#9aa1a6] mb-2">Numéro de série du véhicule (VIN) — optionnel</label>
-              <input name="vin" value={vehicle.vin} onChange={handleVehicleChange} className="w-full bg-transparent border-b border-white/20 focus:border-white/40 outline-none py-3 text-[14px]" />
+              <label className="block text-[12px] text-[#9aa1a6] mb-2">
+                Numéro de série du véhicule (VIN) — optionnel
+              </label>
+              <input
+                name="vin"
+                value={vehicle.vin}
+                onChange={handleVehicleChange}
+                className="w-full bg-transparent border-b border-white/20 focus:border-white/40 outline-none py-3 text-[14px]"
+              />
             </div>
             <div>
-              <label className="block text-[12px] text-[#9aa1a6] mb-2">Marque *</label>
-              <input name="make" value={vehicle.make} onChange={handleVehicleChange} className="w-full bg-transparent border-b border-white/20 focus:border-white/40 outline-none py-3 text-[14px]" />
+              <label className="block text-[12px] text-[#9aa1a6] mb-2">
+                Marque *
+              </label>
+              <input
+                name="make"
+                value={vehicle.make}
+                onChange={handleVehicleChange}
+                className="w-full bg-transparent border-b border-white/20 focus:border-white/40 outline-none py-3 text-[14px]"
+              />
             </div>
             <div>
-              <label className="block text-[12px] text-[#9aa1a6] mb-2">Modèle *</label>
-              <input name="model" value={vehicle.model} onChange={handleVehicleChange} className="w-full bg-transparent border-b border-white/20 focus:border-white/40 outline-none py-3 text-[14px]" />
+              <label className="block text-[12px] text-[#9aa1a6] mb-2">
+                Modèle *
+              </label>
+              <input
+                name="model"
+                value={vehicle.model}
+                onChange={handleVehicleChange}
+                className="w-full bg-transparent border-b border-white/20 focus:border-white/40 outline-none py-3 text-[14px]"
+              />
             </div>
             <div>
-              <label className="block text-[12px] text-[#9aa1a6] mb-2">Sous-modèle</label>
-              <input name="submodel" value={vehicle.submodel} onChange={handleVehicleChange} className="w-full bg-transparent border-b border-white/20 focus:border-white/40 outline-none py-3 text-[14px]" />
+              <label className="block text-[12px] text-[#9aa1a6] mb-2">
+                Sous-modèle
+              </label>
+              <input
+                name="submodel"
+                value={vehicle.submodel}
+                onChange={handleVehicleChange}
+                className="w-full bg-transparent border-b border-white/20 focus:border-white/40 outline-none py-3 text-[14px]"
+              />
             </div>
             <div>
-              <label className="block text-[12px] text-[#9aa1a6] mb-2">Année *</label>
-              <input name="year" value={vehicle.year} onChange={handleVehicleChange} className="w-full bg-transparent border-b border-white/20 focus:border-white/40 outline-none py-3 text-[14px]" />
+              <label className="block text-[12px] text-[#9aa1a6] mb-2">
+                Année *
+              </label>
+              <input
+                name="year"
+                value={vehicle.year}
+                onChange={handleVehicleChange}
+                className="w-full bg-transparent border-b border-white/20 focus:border-white/40 outline-none py-3 text-[14px]"
+              />
             </div>
             <div>
-              <label className="block text-[12px] text-[#9aa1a6] mb-2">KM du véhicule *</label>
-              <input name="mileageKm" value={vehicle.mileageKm} onChange={handleVehicleChange} className="w-full bg-transparent border-b border-white/20 focus:border-white/40 outline-none py-3 text-[14px]" />
+              <label className="block text-[12px] text-[#9aa1a6] mb-2">
+                KM du véhicule *
+              </label>
+              <input
+                name="mileageKm"
+                value={vehicle.mileageKm}
+                onChange={handleVehicleChange}
+                className="w-full bg-transparent border-b border-white/20 focus:border-white/40 outline-none py-3 text-[14px]"
+              />
             </div>
           </div>
           <div className="mt-6">
-            <p className="text-white font-medium text-[15px] md:text-[16px] mb-3">Le véhicule est-il accidenté ? *</p>
+            <p className="text-white font-medium text-[15px] md:text-[16px] mb-3">
+              Le véhicule est-il accidenté ? *
+            </p>
             <div className="flex gap-3">
-              <ChoiceButton label="Oui" active={vehicle.isAccidented === true} onClick={() => handleAccidented(true)} />
-              <ChoiceButton label="Non" active={vehicle.isAccidented === false} onClick={() => handleAccidented(false)} />
+              <ChoiceButton
+                label="Oui"
+                active={vehicle.isAccidented === true}
+                onClick={() => handleAccidented(true)}
+              />
+              <ChoiceButton
+                label="Non"
+                active={vehicle.isAccidented === false}
+                onClick={() => handleAccidented(false)}
+              />
             </div>
           </div>
         </div>
@@ -326,29 +466,49 @@ const ContactForm: React.FC = () => {
 
       {/* Photos */}
       <div className="mt-4 md:mt-6" />
-      <Section id="sec-photos" index={2} title="Photos du véhicule" thumbVisible={thumbFor === 'sec-photos'}>
+      <Section
+        id="sec-photos"
+        index={2}
+        title="Photos du véhicule"
+        thumbVisible={thumbFor === "sec-photos"}
+      >
         <div className="mt-2 space-y-6">
-          <p className="text-white font-medium text-[15px] md:text-[16px]">Ajoutez des photos de votre voiture et des dommages visibles (jusqu'à 12).</p>
-          <div 
-            onDrop={handleDrop} 
-            onDragEnter={preventDefaults} 
-            onDragOver={preventDefaults} 
+          <p className="text-white font-medium text-[15px] md:text-[16px]">
+            Ajoutez des photos de votre voiture et des dommages visibles
+            (jusqu'à 12).
+          </p>
+          <div
+            onDrop={handleDrop}
+            onDragEnter={preventDefaults}
+            onDragOver={preventDefaults}
             onDragLeave={preventDefaults}
             className="border border-dashed border-white/30 rounded-2xl p-6 md:p-8 text-center text-white/80 bg-white/5"
           >
-            <p className="text-sm md:text-base">Glissez-déposez vos images ici ou</p>
+            <p className="text-sm md:text-base">
+              Glissez-déposez vos images ici ou
+            </p>
             <div className="mt-3">
-              <label className="inline-block px-5 py-2 rounded-full bg-white text-[#131618] font-semibold cursor-pointer">
+              <label className="inline-block px-5 py-2 rounded-full bg-white text-black font-semibold cursor-pointer">
                 Sélectionner des fichiers
-                <input type="file" accept="image/*" multiple onChange={handleFileSelect} className="hidden" />
+                <input
+                  type="file"
+                  accept="image/*"
+                  multiple
+                  onChange={handleFileSelect}
+                  className="hidden"
+                />
               </label>
             </div>
             {photoPreviews.length > 0 && (
               <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
                 {photoPreviews.map((src, idx) => (
                   <div key={idx} className="relative group">
-                    <img src={src} alt={`photo-${idx+1}`} className="w-full h-28 object-cover rounded-lg" />
-                    <button 
+                    <img
+                      src={src}
+                      alt={`photo-${idx + 1}`}
+                      className="w-full h-28 object-cover rounded-lg"
+                    />
+                    <button
                       type="button"
                       onClick={() => removePhoto(idx)}
                       className="absolute top-1 right-1 opacity-0 group-hover:opacity-100 transition-opacity bg-black/70 text-white text-xs px-2 py-1 rounded"
@@ -369,10 +529,13 @@ const ContactForm: React.FC = () => {
         <div className="mt-2">
           <motion.button
             onClick={handleSubmit}
-            whileHover={{ scale: 1.03, boxShadow: '0 0 24px rgba(255,255,255,0.08)' }}
+            whileHover={{
+              scale: 1.03,
+              boxShadow: "0 0 24px rgba(255,255,255,0.08)",
+            }}
             whileTap={{ scale: 0.98 }}
-            transition={{ type: 'spring', stiffness: 280, damping: 20 }}
-            className="px-10 h-[52px] rounded-full bg-white text-[#131618] font-bold tracking-[0.04em] cursor-pointer"
+            transition={{ type: "spring", stiffness: 280, damping: 20 }}
+            className="px-10 h-[52px] rounded-full bg-white text-black font-bold tracking-[0.04em] cursor-pointer"
           >
             ENVOYER
           </motion.button>
@@ -383,15 +546,29 @@ const ContactForm: React.FC = () => {
       <div className="mt-24 border-t border-white/10">
         <div className="max-w-[1200px] mx-auto px-6 md:px-10 lg:px-16 grid md:grid-cols-3 gap-10 py-10 text-sm text-[#b6bdc2]">
           <div>
-            <h4 className="uppercase text-white font-bold tracking-[0.06em] text-[12px] mb-4">Vous souhaitez nous jaser?</h4>
-            <p>info@treize.pro<br/>438-940-2500</p>
+            <h4 className="uppercase text-white font-bold tracking-[0.06em] text-[12px] mb-4">
+              Vous souhaitez nous jaser?
+            </h4>
+            <p>
+              info@treize.pro
+              <br />
+              438-940-2500
+            </p>
           </div>
           <div>
-            <h4 className="uppercase text-white font-bold tracking-[0.06em] text-[12px] mb-4">Sinon, on est vieux jeu, on aime le présentiel.</h4>
-            <p>7295 rue Waverly, bureau 403-7<br/>Montréal, QC H2R 0B2</p>
+            <h4 className="uppercase text-white font-bold tracking-[0.06em] text-[12px] mb-4">
+              Sinon, on est vieux jeu, on aime le présentiel.
+            </h4>
+            <p>
+              7295 rue Waverly, bureau 403-7
+              <br />
+              Montréal, QC H2R 0B2
+            </p>
           </div>
           <div>
-            <h4 className="uppercase text-white font-bold tracking-[0.06em] text-[12px] mb-4">Et on aime encore plus prendre une bière!</h4>
+            <h4 className="uppercase text-white font-bold tracking-[0.06em] text-[12px] mb-4">
+              Et on aime encore plus prendre une bière!
+            </h4>
             <ul className="space-y-1">
               <li>2 jours</li>
               <li>18 heures</li>

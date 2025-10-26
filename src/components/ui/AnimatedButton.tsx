@@ -15,15 +15,15 @@ interface AnimatedButtonProps {
 }
 
 const AnimatedButton: React.FC<AnimatedButtonProps> = ({
-  text = 'Vendre ma voiture',
+  text = "Vendre ma voiture",
   onClick,
-  className = '',
-  textColor = '#ffffff',
-  borderColor = '#ffffff',
-  circleColor = '#ffffff',
-  arrowColor = '#ffffff',
-  hoverTextColor = '#1a3a52',
-  hoverArrowColor = '#1a3a52',
+  className = "",
+  textColor = "#ffffff",
+  borderColor = "#ffffff",
+  circleColor = "#ffffff",
+  arrowColor = "#ffffff",
+  hoverTextColor = "#000000",
+  hoverArrowColor = "#000000",
 }) => {
   return (
     <>
@@ -45,7 +45,7 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({
           cursor: pointer;
           overflow: hidden;
           transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-          font-family: 'Hubot Sans', 'Inter', sans-serif;
+          font-family: "Hubot Sans", "Inter", sans-serif;
         }
 
         .animated-button svg {

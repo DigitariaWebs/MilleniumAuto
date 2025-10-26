@@ -12,9 +12,6 @@ const config: Config = {
           ...defaultTheme.fontFamily.sans,
         ],
       },
-      colors: {
-        primary: "#01244C",
-      },
     },
   },
 };

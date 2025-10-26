@@ -11,8 +11,8 @@ interface CarItem {
   image: string;
 }
 
-const BRAND_BG = "#1D4760"; // primary background used in hero
-const BRAND_TEXT = "#0E2C47"; // brand text color used in sections
+const BRAND_BG = "#000000"; // black background used in buttons
+const BRAND_TEXT = "#000000"; // black text color used in sections
 
 const cars: CarItem[] = [
   {

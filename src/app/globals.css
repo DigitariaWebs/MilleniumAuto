@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 
-/* Roadmap (GSAP) styles */
+/* Roadmap (GSAP) styles - DEPRECATED: New Roadmap component uses Tailwind classes */
 ::-webkit-scrollbar { display: none; }
 
 /* Hero gradient animation */
