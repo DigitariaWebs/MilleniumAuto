@@ -2,6 +2,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 export const metadata: Metadata = {
   title: "RÉSERVEZ VOTRE VOITURE DE RÊVE",
@@ -15,6 +16,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${inter.className} font-sans antialiased bg-white text-gray-900 dark:bg-[#0A1722] dark:text-white transition-colors duration-300`}>
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

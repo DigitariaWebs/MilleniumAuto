@@ -15,7 +15,7 @@ interface AnimatedButtonProps {
 }
 
 const AnimatedButton: React.FC<AnimatedButtonProps> = ({
-  text = 'Démarrer un projet',
+  text = 'Vendre ma voiture',
   onClick,
   className = '',
   textColor = '#ffffff',

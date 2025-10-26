@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function BelowHero() {
   return (
-    <section className="bg-white py-16 md:py-24">
+    <section id="about" className="bg-white py-16 md:py-24">
       <div className="w-full px-4 sm:px-6 lg:px-12">
         <h2 className="text-center text-[#0E2C47] font-extrabold uppercase tracking-wide text-2xl md:text-3xl">
           À PROPOS DE MILLENIUM AUTO INC

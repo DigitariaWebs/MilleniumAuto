@@ -216,19 +216,19 @@ const ContactForm: React.FC = () => {
   return (
     <div className={`${barlow.className} pb-24 bg-[#1D4760]`}>
       {/* Header */}
-      <header className="pt-[140px] md:pt-[180px] pb-8 md:pb-16">
+      <header className="pt-[80px] md:pt-[120px] pb-4 md:pb-10">
         <div className="max-w-[1200px] mx-auto px-6 md:px-10 lg:px-16">
-          <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="uppercase tracking-[0.12em] text-[11px] text-white">Soumission</motion.p>
+          <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="uppercase tracking-[0.12em] text-[11px] text-white/80">Contact</motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.05 }}
-            className="mt-2 text-[11vw] md:text-[3.75rem] lg:text-[4.5rem] md:leading-[1] leading-[0.95] font-extrabold -tracking-[0.02em] md:whitespace-nowrap"
+            className="mt-2 text-[11vw] md:text-[3.25rem] lg:text-[4rem] md:leading-[1] leading-[0.95] font-extrabold -tracking-[0.02em] md:whitespace-nowrap"
           >
-            Soumettre votre véhicule
+            Écrivez‑nous, on s’occupe du reste
           </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="mt-8 md:mt-10 max-w-[520px] text-white font-medium text-[15px] md:text-[16px]">
-            Dites-nous ce que vous souhaitez faire avec votre voiture et envoyez-nous quelques photos. Nous vous recontacterons rapidement avec la suite.
+          <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="mt-6 md:mt-8 max-w-[520px] text-white font-medium text-[15px] md:text-[16px]">
+            Appelez‑nous, écrivez‑nous ou envoyez les infos de votre véhicule. Réponse rapide et service humain, fidèle à Millenium Auto.
           </motion.p>
         </div>
       </header>
