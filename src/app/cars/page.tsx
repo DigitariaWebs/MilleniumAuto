@@ -1,5 +1,5 @@
-import CarsHero from "../components/CarsHero";
-import Cars from "../components/Cars";
+import CarsHero from "../../components/CarsHero";
+import Cars from "../../components/sections/Cars";
 
 export default function CarsPage() {
   return (

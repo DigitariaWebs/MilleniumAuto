@@ -1,5 +1,5 @@
 import Image from "next/image";
-import SocialLinks from "./SocialLinks";
+import SocialLinks from "../ui/SocialLinks";
 
 export default function Hero() {
   return (

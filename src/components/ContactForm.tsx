@@ -67,7 +67,7 @@ const ChoiceButton: React.FC<ChoiceButtonProps> = ({ label, active = false, onCl
     transition={{ type: 'spring', stiffness: 300, damping: 20 }}
     onClick={onClick}
     aria-pressed={active}
-    className={`inline-flex items-center justify-center px-1 md:px-1 lg:px-1 py-[14px] md:py-4 lg:py-4 rounded-full border text-[15px] md:text-[15px] font-semibold tracking-[0.04em] min-w-[120px] md:min-w-[140px] lg:min-w-[160px] backdrop-blur-sm transition-colors duration-300 ${
+    className={`inline-flex items-center justify-center px-1 md:px-1 lg:px-1 py-3.5 md:py-4 lg:py-4 rounded-full border text-[15px] md:text-[15px] font-semibold tracking-[0.04em] min-w-[120px] md:min-w-[140px] lg:min-w-40 backdrop-blur-sm transition-colors duration-300 ${
       active
         ? 'bg-white text-black border-white'
         : 'bg-transparent text-white border-white/20 hover:bg-white hover:text-black hover:border-white/60'
@@ -216,14 +216,14 @@ const ContactForm: React.FC = () => {
   return (
     <div className={`${barlow.className} pb-24 bg-[#1D4760]`}>
       {/* Header */}
-      <header className="pt-[80px] md:pt-[120px] pb-4 md:pb-10">
+      <header className="pt-20 md:pt-[120px] pb-4 md:pb-10">
         <div className="max-w-[1200px] mx-auto px-6 md:px-10 lg:px-16">
           <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="uppercase tracking-[0.12em] text-[11px] text-white/80">Contact</motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.05 }}
-            className="mt-2 text-[11vw] md:text-[3.25rem] lg:text-[4rem] md:leading-[1] leading-[0.95] font-extrabold -tracking-[0.02em] md:whitespace-nowrap"
+            className="mt-2 text-[11vw] md:text-[3.25rem] lg:text-[4rem] md:leading-none leading-[0.95] font-extrabold -tracking-[0.02em] md:whitespace-nowrap"
           >
             Écrivez‑nous, on s’occupe du reste
           </motion.h1>
