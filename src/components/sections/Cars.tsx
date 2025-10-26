@@ -11,8 +11,8 @@ interface CarItem {
   image: string;
 }
 
-const BRAND_BG = "#000000"; // black background used in buttons
-const BRAND_TEXT = "#000000"; // black text color used in sections
+const BRAND_BG = "#374151"; // grey background used in buttons
+const BRAND_TEXT = "#1f2937"; // grey text color used in sections
 
 const cars: CarItem[] = [
   {
@@ -82,15 +82,22 @@ function formatKm(value: number) {
 }
 
 function formatPrice(value: number) {
-  return new Intl.NumberFormat("fr-CA", { style: "currency", currency: "CAD", maximumFractionDigits: 0 }).format(value);
+  return new Intl.NumberFormat("fr-CA", {
+    style: "currency",
+    currency: "CAD",
+    maximumFractionDigits: 0,
+  }).format(value);
 }
 
 export default function Cars() {
   return (
-    <section id="cars" className="py-16 md:py-24 bg-white">
+    <section id="cars" className="pb-12 md:pb-16 md:pt-26 bg-gray-50">
       <div className="container mx-auto max-w-7xl px-4">
         <div className="flex items-end justify-between gap-4">
-          <h2 className="text-2xl md:text-3xl font-extrabold uppercase tracking-wide" style={{ color: BRAND_TEXT }}>
+          <h2
+            className="text-2xl md:text-3xl font-extrabold uppercase tracking-wide"
+            style={{ color: BRAND_TEXT }}
+          >
             Nos véhicules
           </h2>
           <a
@@ -104,7 +111,10 @@ export default function Cars() {
 
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {cars.map((car) => (
-            <article key={car.id} className="rounded-2xl border border-gray-200 bg-white overflow-hidden shadow-sm hover:shadow-md transition">
+            <article
+              key={car.id}
+              className="rounded-2xl border border-gray-300 bg-gray-50 overflow-hidden shadow-sm hover:shadow-md transition"
+            >
               <div className="relative w-full h-52 md:h-56">
                 <Image
                   src={car.image}
@@ -114,24 +124,34 @@ export default function Cars() {
                   className="object-cover"
                   priority={false}
                 />
-                <div className="absolute top-3 left-3 rounded-full px-3 py-1 text-xs font-semibold text-white" style={{ backgroundColor: BRAND_BG }}>
+                <div
+                  className="absolute top-3 left-3 rounded-full px-3 py-1 text-xs font-semibold text-white"
+                  style={{ backgroundColor: BRAND_BG }}
+                >
                   {formatPrice(car.priceCad)}
                 </div>
               </div>
 
               <div className="p-4 md:p-5">
-                <h3 className="text-base md:text-lg font-semibold" style={{ color: BRAND_TEXT }}>
+                <h3
+                  className="text-base md:text-lg font-semibold"
+                  style={{ color: BRAND_TEXT }}
+                >
                   {car.title} · {car.year}
                 </h3>
 
                 <dl className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-gray-600">
                   <div>
                     <dt className="text-gray-500">Kilométrage</dt>
-                    <dd className="font-medium text-gray-800">{formatKm(car.mileageKm)}</dd>
+                    <dd className="font-medium text-gray-800">
+                      {formatKm(car.mileageKm)}
+                    </dd>
                   </div>
                   <div>
                     <dt className="text-gray-500">Transmission</dt>
-                    <dd className="font-medium text-gray-800">{car.transmission}</dd>
+                    <dd className="font-medium text-gray-800">
+                      {car.transmission}
+                    </dd>
                   </div>
                   <div>
                     <dt className="text-gray-500">Carburant</dt>
@@ -139,7 +159,9 @@ export default function Cars() {
                   </div>
                   <div>
                     <dt className="text-gray-500">Prix</dt>
-                    <dd className="font-medium text-gray-800">{formatPrice(car.priceCad)}</dd>
+                    <dd className="font-medium text-gray-800">
+                      {formatPrice(car.priceCad)}
+                    </dd>
                   </div>
                 </dl>
 

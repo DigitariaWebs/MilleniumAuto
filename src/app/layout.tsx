@@ -13,7 +13,7 @@ const inter = Inter({ subsets: ["latin"], display: "swap" });
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr">
-      <body className={`${inter.className} font-sans antialiased bg-white text-gray-900 dark:bg-[#0A1722] dark:text-white transition-colors duration-300`}>
+      <body className={`${inter.className} font-sans antialiased`}>
         <Navbar />
         {children}
         <Footer />

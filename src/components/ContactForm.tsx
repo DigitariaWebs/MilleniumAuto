@@ -214,7 +214,7 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <div className={`${barlow.className} pb-24 bg-black`}>
+    <div className={`${barlow.className} pb-24 bg-gray-900`}>
       {/* Header */}
       <header className="pt-20 md:pt-[120px] pb-4 md:pb-10">
         <div className="max-w-[1200px] mx-auto px-6 md:px-10 lg:px-16">

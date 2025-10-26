@@ -2,18 +2,18 @@ import Image from "next/image";
 
 export default function BelowHero() {
   return (
-    <section id="about" className="bg-white py-16 md:py-24">
+    <section id="about" className="bg-gray-50 py-12 md:py-36">
       <div className="w-full px-4 sm:px-6 lg:px-12">
-        <h2 className="text-center text-black font-extrabold uppercase tracking-wide text-2xl md:text-3xl">
+        <h2 className="text-center text-gray-900 font-extrabold uppercase tracking-wide text-2xl md:text-3xl">
           À PROPOS DE MILLENIUM AUTO INC
         </h2>
 
-        <div className="mt-10 grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+        <div className="mt-20 grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
           {/* Left column cards */}
           <div className="space-y-6">
             <div className="rounded-2xl border border-gray-200 p-6 shadow-sm">
               <div className="flex items-start gap-3">
-                <div className="mt-1 text-black">
+                <div className="mt-1 text-gray-800">
                   {/* icon */}
                   <svg
                     width="22"
@@ -30,7 +30,7 @@ export default function BelowHero() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-black">
+                  <h3 className="font-semibold text-gray-900">
                     Notre engagement depuis 2013
                   </h3>
                   <p className="mt-2 text-sm text-gray-600 leading-relaxed">
@@ -44,9 +44,9 @@ export default function BelowHero() {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-gray-200 p-6 shadow-sm">
+            <div className="rounded-2xl border border-gray-300 p-6 shadow-sm">
               <div className="flex items-start gap-3">
-                <div className="mt-1 text-black">
+                <div className="mt-1 text-gray-800">
                   {/* icon */}
                   <svg
                     width="22"
@@ -62,7 +62,7 @@ export default function BelowHero() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-black">
+                  <h3 className="font-semibold text-gray-900">
                     Transparence et sérénité
                   </h3>
                   <p className="mt-2 text-sm text-gray-600 leading-relaxed">
@@ -92,9 +92,9 @@ export default function BelowHero() {
 
           {/* Right column cards */}
           <div className="space-y-6">
-            <div className="rounded-2xl border border-gray-200 p-6 shadow-sm">
+            <div className="rounded-2xl border border-gray-300 p-6 shadow-sm">
               <div className="flex items-start gap-3">
-                <div className="mt-1 text-black">
+                <div className="mt-1 text-gray-800">
                   {/* icon */}
                   <svg
                     width="22"
@@ -112,7 +112,7 @@ export default function BelowHero() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-black">
+                  <h3 className="font-semibold text-gray-900">
                     Satisfaction avant tout
                   </h3>
                   <p className="mt-2 text-sm text-gray-600 leading-relaxed">
@@ -125,9 +125,9 @@ export default function BelowHero() {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-gray-200 p-6 shadow-sm">
+            <div className="rounded-2xl border border-gray-300 p-6 shadow-sm">
               <div className="flex items-start gap-3">
-                <div className="mt-1 text-black">
+                <div className="mt-1 text-gray-800">
                   {/* icon */}
                   <svg
                     width="22"
@@ -144,7 +144,7 @@ export default function BelowHero() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-black">
+                  <h3 className="font-semibold text-gray-900">
                     Toujours à la recherche de véhicules
                   </h3>
                   <p className="mt-2 text-sm text-gray-600 leading-relaxed">
