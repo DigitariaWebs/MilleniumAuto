@@ -18,7 +18,7 @@ export default function Hero() {
 
           <div className="mt-8 flex justify-center">
             <Image
-              src="/test.png"
+              src="/HeroSection.png"
               alt="Voiture de sport gris bleuté de profil"
               width={1200}
               height={500}

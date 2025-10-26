@@ -10,7 +10,7 @@ export default function Navbar() {
           <div className="flex-1 flex items-center">
             <Link href="/" aria-label="Accueil">
               <Image
-                src="/Modern_M_Letter_Logo-removebg-preview.png"
+                src="/Logo.png"
                 alt="Millenium Auto"
                 width={420}
                 height={120}
