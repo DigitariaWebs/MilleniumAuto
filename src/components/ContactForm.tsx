@@ -136,11 +136,42 @@ const ContactForm: React.FC = () => {
 
     setIsSubmitting(true);
 
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    try {
+      const formData = new FormData();
 
-    setIsSubmitted(true);
-    setIsSubmitting(false);
+      // Add personal info
+      Object.entries(personal).forEach(([key, value]) => {
+        formData.append(key, value);
+      });
+
+      // Add vehicle info
+      Object.entries(vehicle).forEach(([key, value]) => {
+        formData.append(key, value.toString());
+      });
+
+      // Add photos
+      photos.forEach((photo, index) => {
+        formData.append("photos", photo);
+      });
+
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        body: formData,
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setIsSubmitted(true);
+      } else {
+        alert("Erreur lors de l'envoi: " + result.message);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Erreur lors de l'envoi. Veuillez réessayer.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (isSubmitted) {
@@ -466,7 +497,7 @@ const ContactForm: React.FC = () => {
                     name="vin"
                     value={vehicle.vin}
                     onChange={handleVehicleChange}
-                    className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/20 transition-colors"
+                    className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-black/20 transition-colors"
                     placeholder="17 caractères alphanumériques"
                   />
                 </div>
