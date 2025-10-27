@@ -1,4 +1,25 @@
+"use client"
+
+import React, { useState, useEffect } from 'react';
+
 export default function Footer() {
+  const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
+
+  useEffect(() => {
+    // Check if admin is logged in
+    const checkAdminStatus = async () => {
+      try {
+        const response = await fetch('/api/admin/verify');
+        const data = await response.json();
+        setIsAdminLoggedIn(data.authenticated || false);
+      } catch (error) {
+        setIsAdminLoggedIn(false);
+      }
+    };
+
+    checkAdminStatus();
+  }, []);
+
   return (
     <footer className="bg-black text-white">
       <div className="container mx-auto max-w-7xl px-4 py-12">
@@ -73,9 +94,18 @@ export default function Footer() {
             © {new Date().getFullYear()} Millenium Auto inc. Tous droits
             réservés.
           </p>
-          <p className="text-xs text-gray-400">
-            SAAQ partenaire • Service rapide et fiable
-          </p>
+          <div className="flex items-center gap-6">
+            <p className="text-xs text-gray-400">
+              SAAQ partenaire • Service rapide et fiable
+            </p>
+            <a
+              href={isAdminLoggedIn ? "/admin/dashboard" : "/admin/login"}
+              className="text-xs text-gray-400 hover:text-white transition-colors"
+              title="Administration"
+            >
+              Admin
+            </a>
+          </div>
         </div>
       </div>
     </footer>
