@@ -123,4 +123,8 @@
   .footer h1 { font-size: 8vw; }
 }
 
+button:hover{
+  cursor: pointer;
+}
+
 
