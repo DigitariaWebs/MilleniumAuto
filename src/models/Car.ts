@@ -71,11 +71,13 @@ export class CarModel {
   static async updateCar(id: string, carData: Partial<Car>): Promise<boolean> {
     try {
       const { db } = await connectToDatabase();
+      // Exclude _id from the update data since it's immutable
+      const { _id, ...updateData } = carData;
       const result = await db.collection(this.collectionName).updateOne(
         { _id: new ObjectId(id) },
         {
           $set: {
-            ...carData,
+            ...updateData,
             updatedAt: new Date()
           }
         }

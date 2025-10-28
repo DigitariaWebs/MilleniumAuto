@@ -1,7 +1,7 @@
 'use client';
 
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 interface CarItem {
   _id: string;
@@ -82,9 +82,13 @@ function getStatusColor(status: "available" | "sold" | "reserved") {
   }
 }
 
-export default function Cars() {
-  const [cars, setCars] = useState<CarItem[]>([]);
-  const [loading, setLoading] = useState(true);
+interface CarsProps {
+  initialCars?: CarItem[];
+}
+
+export default function Cars({ initialCars = [] }: CarsProps) {
+  const [cars, setCars] = useState<CarItem[]>(initialCars);
+  const [loading, setLoading] = useState(initialCars.length === 0);
   const [error, setError] = useState<string | null>(null);
   const [selectedCar, setSelectedCar] = useState<CarItem | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -134,43 +138,41 @@ export default function Cars() {
       : selectedCar.images.length;
   };
 
-  useEffect(() => {
-    const fetchCars = async () => {
-      try {
-        const response = await fetch("/api/cars");
-        const data = await response.json();
+  const fetchCars = useCallback(async () => {
+    try {
+      setLoading(true);
+      const response = await fetch("/api/cars");
+      const data = await response.json();
 
-        if (data.success) {
-          setCars(data.cars);
-        } else {
-          setError("Failed to load cars");
-        }
-      } catch (err) {
+      if (data.success) {
+        setCars(data.cars);
+      } else {
         setError("Failed to load cars");
-        console.error("Error fetching cars:", err);
-      } finally {
-        setLoading(false);
       }
-    };
-
-    fetchCars();
+    } catch (err) {
+      setError("Failed to load cars");
+      console.error("Error fetching cars:", err);
+    } finally {
+      setLoading(false);
+    }
   }, []);
 
   useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape" && selectedCar) {
-        closeCarModal();
-      }
-    };
-
-    if (selectedCar) {
-      document.addEventListener("keydown", handleKeyDown);
+    // Only fetch on client if we don't have initial server data
+    if (initialCars.length === 0) {
+      fetchCars();
     }
+  }, [initialCars.length, fetchCars]);
 
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
+  useEffect(() => {
+    const handleFocus = () => {
+      fetchCars();
     };
-  }, [selectedCar]);
+
+    window.addEventListener("focus", handleFocus);
+
+    return () => window.removeEventListener("focus", handleFocus);
+  }, [fetchCars]);
 
   if (loading) {
     return (

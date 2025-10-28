@@ -1,14 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { CarModel } from '@/models/Car';
 
-// GET - Fetch all available cars for public view
+// GET - Fetch all cars for public view
 export async function GET(request: NextRequest) {
   try {
-    // Only fetch cars with status 'available'
+    // Fetch all cars (no status filter)
     const cars = await CarModel.getAllCars();
-    const availableCars = cars.filter(car => car.status === 'available');
 
-    return NextResponse.json({ success: true, cars: availableCars });
+    return NextResponse.json({ success: true, cars });
   } catch (error) {
     console.error('Error fetching cars:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
