@@ -78,7 +78,7 @@ export default function BelowHero() {
 
           {/* Center image */}
           <div className="order-first lg:order-0 flex justify-center lg:justify-self-center">
-            <div className="relative w-full max-w-sm mx-auto transform lg:translate-x-16">
+            <div className="relative w-full max-w-xs md:max-w-sm mx-auto">
               <Image
                 src="/AboutSection.png"
                 alt="Vue du dessus d’une voiture bleue"

@@ -138,7 +138,7 @@ export default function Cars({}: CarsProps) {
   };
 
   return (
-    <section id="cars" className="pb-12 md:pb-16 md:pt-26 bg-gray-50">
+    <section id="cars" className="pt-8 md:pt-26 pb-12 md:pb-16 bg-gray-50">
       <div className="container mx-auto max-w-7xl px-4">
         <div className="flex items-end justify-between gap-4">
           <h2

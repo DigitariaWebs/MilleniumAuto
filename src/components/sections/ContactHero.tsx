@@ -1,6 +1,6 @@
 export default function ContactHero() {
   return (
-    <section className="py-16 md:py-20 bg-linear-to-br from-gray-50 to-white min-h-[50vh] flex items-center relative overflow-hidden">
+    <section className="py-16 md:py-20 bg-linear-to-br from-gray-50 to-white min-h-[40vh] md:min-h-[50vh] flex items-center relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 -left-32 w-64 h-64 bg-gray-100 rounded-full blur-3xl opacity-40"></div>
@@ -9,11 +9,9 @@ export default function ContactHero() {
 
       <div className="container mx-auto max-w-7xl px-4 relative z-10">
         <div className="mx-auto max-w-4xl text-center">
-          
-
-          <h1 className="text-black font-bold text-4xl md:text-6xl lg:text-7xl leading-tight mb-6">
+          <h1 className="text-black font-bold text-3xl md:text-6xl lg:text-7xl leading-tight mb-6">
             Vendez votre véhicule
-            <span className="block text-gray-600 font-semibold text-2xl md:text-4xl lg:text-5xl mt-2">
+            <span className="block text-gray-600 font-semibold text-xl md:text-4xl lg:text-5xl mt-2">
               en quelques clics
             </span>
           </h1>
@@ -29,7 +27,7 @@ export default function ContactHero() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
               href="#form"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+              className="inline-flex items-center gap-3 px-6 md:px-8 py-4 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
             >
               <span>Commencer l'évaluation</span>
               <svg
@@ -47,7 +45,7 @@ export default function ContactHero() {
               </svg>
             </a>
 
-            <div className="flex items-center gap-6 text-sm text-gray-500">
+            <div className="flex items-center gap-4 md:gap-6 text-sm text-gray-500">
               <div className="flex items-center gap-2">
                 <svg
                   className="w-4 h-4 text-green-500"

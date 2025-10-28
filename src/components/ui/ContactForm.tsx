@@ -222,7 +222,7 @@ const ContactForm: React.FC = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.05 }}
-            className="mt-2 text-4xl md:text-5xl lg:text-6xl font-extrabold text-black leading-tight"
+            className="mt-2 text-3xl md:text-5xl lg:text-6xl font-extrabold text-black leading-tight"
           >
             Vendez votre véhicule
           </motion.h1>
@@ -239,7 +239,7 @@ const ContactForm: React.FC = () => {
 
       {/* Progress Indicator */}
       <div className="max-w-4xl mx-auto px-6 md:px-10 lg:px-16 mb-12">
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-start justify-between mb-8">
           {steps.map((step, index) => (
             <React.Fragment key={step.id}>
               <div className="flex flex-col items-center">
