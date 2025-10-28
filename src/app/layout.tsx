@@ -6,7 +6,13 @@ import Footer from "../components/layout/Footer";
 import { CarsProvider } from "../components/CarsContext";
 
 export const metadata: Metadata = {
-  title: "RÉSERVEZ VOTRE VOITURE DE RÊVE",
+  title: "Millenium Auto Inc - Vendez et Achetez des Voitures",
+  description: "Découvrez Millenium Auto Inc, le plus grand grossiste de véhicules au Québec. Achetez ou vendez votre voiture en quelques clics avec des véhicules inspectés et un processus simplifié.",
+  keywords: ["voitures", "automobiles", "achat voiture", "vente voiture", "Montréal", "Québec", "véhicules d'occasion"],
+  authors: [{ name: "Millenium Auto Inc" }],
+  icons: {
+    icon: '/Favicon.png',
+  },
 };
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
