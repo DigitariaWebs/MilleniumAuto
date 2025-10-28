@@ -3,16 +3,16 @@ import SocialLinks from "../ui/SocialLinks";
 
 export default function Hero() {
   return (
-    <section className="pb-8 bg-gray-50">
+    <section className="pb-6 md:pb-8 bg-gray-50">
       <div className="container mx-auto max-w-7xl px-4 relative">
         {/* Social column removed as requested */}
 
         {/* Content */}
         <div className="mx-auto max-w-5xl">
-          <h1 className="text-gray-900 font-bold uppercase text-3xl md:text-5xl xl:text-6xl leading-tight text-center">
+          <h1 className="text-gray-900 font-bold uppercase text-2xl md:text-4xl xl:text-6xl leading-tight text-center">
             NOUS ACHETONS VOTRE VÉHICULE
           </h1>
-          <p className="mt-4 text-center tracking-wide text-gray-600 max-w-3xl mx-auto text-sm md:text-base">
+          <p className="mt-4 text-center tracking-wide text-gray-600 max-w-3xl mx-auto text-sm md:text-base leading-relaxed">
             Notre garantie : un processus simple, rapide, humain et clé en main.
           </p>
 
@@ -31,7 +31,7 @@ export default function Hero() {
             <a
               href="/contact"
               aria-label="Vendre mon véhicule"
-              className="inline-flex items-center justify-center min-w-[200px] h-12 px-8 rounded-full font-semibold tracking-wide bg-gray-900 text-white ring-1 ring-gray-900/20 shadow-[0_8px_24px_rgba(0,0,0,0.15)] transition duration-200 transform hover:-translate-y-0.5 hover:ring-gray-900/30 hover:shadow-[0_16px_32px_rgba(0,0,0,0.2)] active:translate-y-0"
+              className="inline-flex items-center justify-center w-full sm:w-auto h-12 px-6 sm:px-8 rounded-full font-semibold tracking-wide bg-gray-900 text-white ring-1 ring-gray-900/20 shadow-[0_8px_24px_rgba(0,0,0,0.15)] transition duration-200 transform hover:-translate-y-0.5 hover:ring-gray-900/30 hover:shadow-[0_16px_32px_rgba(0,0,0,0.2)] active:translate-y-0"
             >
               Vendre mon véhicule
             </a>
@@ -39,7 +39,7 @@ export default function Hero() {
             <a
               href="tel:+14389402500"
               aria-label="Appeler un conseiller"
-              className="inline-flex items-center justify-center min-w-[200px] h-12 px-8 rounded-full text-gray-700 bg-gray-100 backdrop-blur-sm border border-gray-300 transition duration-200 transform hover:-translate-y-0.5 hover:bg-gray-200 hover:border-gray-400 active:translate-y-0"
+              className="inline-flex items-center justify-center w-full sm:w-auto h-12 px-6 sm:px-8 rounded-full text-gray-700 bg-gray-100 backdrop-blur-sm border border-gray-300 transition duration-200 transform hover:-translate-y-0.5 hover:bg-gray-200 hover:border-gray-400 active:translate-y-0"
             >
               Appeler un conseiller
             </a>

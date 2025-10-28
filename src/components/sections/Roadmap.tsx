@@ -246,19 +246,19 @@ export default function Roadmap() {
         </div>
 
         {/* Call to Action */}
-        <div className="text-center mt-12 md:mt-16">
+        <div className="text-center mt-8 md:mt-16">
           <div className="max-w-2xl mx-auto">
-            <div className="bg-gray-50 rounded-2xl p-8 md:p-12 border border-gray-200">
-              <h3 className="text-2xl md:text-3xl font-bold text-black mb-4">
-                Prêt à vendre votre véhicule ?
+            <div className="bg-gray-50 rounded-2xl p-6 md:p-12 border border-gray-200">
+              <h3 className="text-xl md:text-3xl font-bold text-black mb-4">
+                Prêt à vendre votre véhicule?
               </h3>
-              <p className="text-gray-600 mb-8 text-lg">
+              <p className="text-gray-600 mb-6 md:mb-8 text-base md:text-lg">
                 Commencez dès maintenant et recevez une offre en moins de 24h
               </p>
 
               <a
                 href="/contact"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+                className="inline-flex items-center gap-2 md:gap-3 px-6 md:px-8 py-3 md:py-4 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
               >
                 <span>Commencer maintenant</span>
                 <svg
@@ -276,10 +276,10 @@ export default function Roadmap() {
                 </svg>
               </a>
 
-              <div className="flex items-center justify-center gap-6 mt-8 text-sm text-gray-500">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 mt-6 md:mt-8 text-xs md:text-sm text-gray-500">
                 <div className="flex items-center gap-2">
                   <svg
-                    className="w-4 h-4 text-green-500"
+                    className="w-3 h-3 md:w-4 md:h-4 text-green-500"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                   >
@@ -293,7 +293,7 @@ export default function Roadmap() {
                 </div>
                 <div className="flex items-center gap-2">
                   <svg
-                    className="w-4 h-4 text-green-500"
+                    className="w-3 h-3 md:w-4 md:h-4 text-green-500"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                   >
@@ -307,7 +307,7 @@ export default function Roadmap() {
                 </div>
                 <div className="flex items-center gap-2">
                   <svg
-                    className="w-4 h-4 text-green-500"
+                    className="w-3 h-3 md:w-4 md:h-4 text-green-500"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                   >

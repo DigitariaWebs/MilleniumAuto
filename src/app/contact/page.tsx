@@ -1,4 +1,4 @@
-import ContactForm from '../../components/ContactForm';
+import ContactForm from '../../components/ui/ContactForm';
 import ContactHero from '../../components/sections/ContactHero';
 import type { Metadata } from 'next';
 

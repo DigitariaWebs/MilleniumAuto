@@ -22,8 +22,8 @@ export default function Footer() {
 
   return (
     <footer className="bg-black text-white">
-      <div className="container mx-auto max-w-7xl px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+      <div className="container mx-auto max-w-7xl px-4 py-8 md:py-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-10">
           <div>
             <h3 className="uppercase text-sm font-bold tracking-wider opacity-90">
               Millenium Auto inc
@@ -89,7 +89,7 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <div className="mt-10 border-t border-gray-600 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="mt-8 md:mt-10 border-t border-gray-600 pt-4 md:pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-gray-400">
             © {new Date().getFullYear()} Millenium Auto inc. Tous droits
             réservés.
