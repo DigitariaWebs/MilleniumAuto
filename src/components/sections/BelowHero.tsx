@@ -5,7 +5,7 @@ export default function BelowHero() {
     <section id="about" className="bg-gray-50 py-12 md:py-36">
       <div className="w-full px-4 sm:px-6 lg:px-12">
         <h2 className="text-center text-gray-900 font-extrabold uppercase tracking-wide text-2xl md:text-3xl">
-          À PROPOS DE MILLENIUM AUTO INC
+          À PROPOS DE MILLENIUM AUTOS INC
         </h2>
 
         <div className="mt-20 grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
@@ -31,14 +31,14 @@ export default function BelowHero() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900">
-                    Notre engagement depuis 2013
+                    Notre engagement depuis 2019
                   </h3>
                   <p className="mt-2 text-sm text-gray-600 leading-relaxed">
-                    Depuis 2013, Millenium Auto inc poursuit l’ambition de
-                    devenir le plus grand grossiste de véhicules au Québec. Une
-                    équipe dévouée œuvre chaque jour pour offrir une expérience
-                    d’achat transparente et satisfaisante, portée par notre
-                    passion pour l’automobile et l’excellence.
+                    Depuis 2019, Millenium Autos inc s'est donnée pour mission
+                    de devenir l'un des principaux grossistes de véhicules au
+                    Québec. Chaque jour, notre équipe dévouée s'engage à offrir
+                    une expérience d'achat transparente et agréable, animée par
+                    notre passion pour l'automobile et notre quête d'excellence.
                   </p>
                 </div>
               </div>

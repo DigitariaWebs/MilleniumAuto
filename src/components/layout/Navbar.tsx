@@ -43,7 +43,7 @@ export default function Navbar() {
             <Link href="/" aria-label="Accueil">
               <Image
                 src="/Logo.png"
-                alt="Millenium Auto"
+                alt="Millenium Autos"
                 width={420}
                 height={120}
                 className="h-20 md:h-24 w-auto object-contain"

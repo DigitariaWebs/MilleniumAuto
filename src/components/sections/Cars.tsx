@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState, useCallback } from "react";
-import { useCars } from "../CarsContext";
+import { useCars } from "../context/CarsContext";
 
 interface CarItem {
   _id: string;
@@ -237,7 +237,7 @@ export default function Cars({}: CarsProps) {
                       Plus de détails
                     </button>
                     <a
-                      href="tel:+14389402500"
+                      href="tel:4389258315"
                       className="inline-flex items-center justify-center h-10 px-5 rounded-full border text-[#0E2C47]"
                       style={{ borderColor: BRAND_TEXT }}
                     >
@@ -464,7 +464,7 @@ export default function Cars({}: CarsProps) {
                   Demander plus d'infos
                 </a>
                 <a
-                  href="tel:+14389402500"
+                  href="tel:4389258315"
                   className="flex-1 inline-flex items-center justify-center min-h-5 md:min-h-12 py-4 px-6 md:px-6 rounded-full border font-semibold text-[#0E2C47] text-sm md:text-base"
                   style={{ borderColor: BRAND_TEXT }}
                 >

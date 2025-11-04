@@ -863,17 +863,17 @@ const ContactForm: React.FC = () => {
             <div>
               <h4 className="text-black font-semibold mb-2">Contactez-nous</h4>
               <p className="text-gray-600 text-sm">
-                info@milleniumauto.ca
+                info@milleniumautos.ca
                 <br />
-                +1 (438) 940-2500
+                (438) 925-8315
               </p>
             </div>
             <div>
               <h4 className="text-black font-semibold mb-2">Adresse</h4>
               <p className="text-gray-600 text-sm">
-                7295 rue Waverly, bureau 403-7
+                103D20-28 RUE DE L'ÉGLISE S
                 <br />
-                Montréal, QC H2R 0B2
+                LACOLLE QC J0J 1J0
               </p>
             </div>
           </div>

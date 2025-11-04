@@ -26,7 +26,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-10">
           <div>
             <h3 className="uppercase text-sm font-bold tracking-wider opacity-90">
-              Millenium Auto inc
+              Millenium Autos inc
             </h3>
             <p className="mt-3 text-gray-300 text-sm leading-relaxed">
               Achat et revente de véhicules au Québec. Transparence, simplicité
@@ -40,18 +40,18 @@ export default function Footer() {
             <ul className="mt-3 space-y-2 text-gray-300 text-sm">
               <li>
                 <a
-                  href="tel:+14389402500"
+                  href="tel:4389258315"
                   className="hover:text-white transition"
                 >
-                  +1 (438) 940‑2500
+                  (438) 925-8315
                 </a>
               </li>
               <li>
                 <a
-                  href="mailto:info@milleniumauto.ca"
+                  href="mailto:info@milleniumautos.ca"
                   className="hover:text-white transition"
                 >
-                  info@milleniumauto.ca
+                  info@milleniumautos.ca
                 </a>
               </li>
             </ul>
@@ -61,9 +61,9 @@ export default function Footer() {
               Adresse
             </h4>
             <p className="mt-3 text-gray-300 text-sm">
-              7295 rue Waverly, bureau 403-7
+              103D20-28 RUE DE L'ÉGLISE S
               <br />
-              Montréal, QC H2R 0B2
+              LACOLLE QC J0J 1J0
             </p>
           </div>
           <div>
@@ -91,7 +91,7 @@ export default function Footer() {
         </div>
         <div className="mt-8 md:mt-10 border-t border-gray-600 pt-4 md:pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-gray-400">
-            © {new Date().getFullYear()} Millenium Auto inc. Tous droits
+            © {new Date().getFullYear()} Millenium Autos inc. Tous droits
             réservés.
           </p>
           <div className="flex items-center gap-6">

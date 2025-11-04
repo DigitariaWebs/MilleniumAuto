@@ -71,7 +71,7 @@ const stepsData: StepData[] = [
     title: "Vendez-nous",
     subtitle: "votre véhicule",
     description:
-      "Acceptez l'offre et nous nous occupons de tout. Paiement immédiat et démarches simplifiées.",
+      "Vendez sans sortir de chez vous sauf pour nous remettre les clés! Notre équipe récupère votre véhicule n'importe où au Québec et vous remet votre chèque, vos documents de la SAAQ et votre preuve de quittance si vous possédiez encore une dette sur le véhicule. Pas besoin de vous déplacer!",
     icon: (
       <svg
         className="w-8 h-8"
