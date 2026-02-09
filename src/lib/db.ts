@@ -1,16 +1,20 @@
 import { MongoClient, Db } from 'mongodb';
 
 const MONGODB_URI = process.env.MONGODB_URI;
-const MONGODB_DB = process.env.MONGODB_DB || 'milleniumautos';
 
 if (!MONGODB_URI) {
-  throw new Error('Please define the MONGODB_URI environment variable inside .env');
+  throw new Error(
+    "Please define the MONGODB_URI environment variable inside .env",
+  );
 }
 
 let cachedClient: MongoClient;
 let cachedDb: Db;
 
-export async function connectToDatabase(): Promise<{ client: MongoClient; db: Db }> {
+export async function connectToDatabase(): Promise<{
+  client: MongoClient;
+  db: Db;
+}> {
   if (cachedClient && cachedDb) {
     return { client: cachedClient, db: cachedDb };
   }
@@ -19,14 +23,14 @@ export async function connectToDatabase(): Promise<{ client: MongoClient; db: Db
 
   try {
     await client.connect();
-    const db = client.db(MONGODB_DB);
+    const db = client.db();
 
     cachedClient = client;
     cachedDb = db;
 
     return { client, db };
   } catch (error) {
-    console.error('Failed to connect to MongoDB:', error);
+    console.error("Failed to connect to MongoDB:", error);
     throw error;
   }
 }

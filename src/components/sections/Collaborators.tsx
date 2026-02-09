@@ -22,7 +22,7 @@ export default function Collaborators() {
             />
           </div>
           
-          <div className="grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
+          {/* <div className="grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
             <Image
               src="/LogoColab.png"
               alt="Office de la protection du consommateur Québec"
@@ -31,7 +31,7 @@ export default function Collaborators() {
               className="h-16 md:h-20 w-auto object-contain"
               priority
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
